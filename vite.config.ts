@@ -3,10 +3,9 @@ import tailwindcss from "@tailwindcss/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
-import { cloudflare } from "@cloudflare/vite-plugin";
 
-export default defineConfig(({ command }) => {
-  const plugins = [
+export default defineConfig({
+  plugins: [
     tailwindcss(),
     tsconfigPaths({ projects: ["./tsconfig.json"] }),
     tanstackStart({
@@ -22,40 +21,28 @@ export default defineConfig(({ command }) => {
       },
     }),
     viteReact(),
-  ];
-
-  if (command === "build") {
-    plugins.push(
-      cloudflare({
-        viteEnvironment: { name: "ssr" },
-      }),
-    );
-  }
-
-  return {
-    resolve: {
-      alias: {
-        "@": `${process.cwd()}/src`,
-      },
-      dedupe: [
-        "react",
-        "react-dom",
-        "react/jsx-runtime",
-        "react/jsx-dev-runtime",
-        "@tanstack/react-query",
-        "@tanstack/query-core",
-      ],
+  ],
+  resolve: {
+    alias: {
+      "@": `${process.cwd()}/src`,
     },
-    server: {
-      host: "::",
-      port: 8080,
-      watch: {
-        awaitWriteFinish: {
-          stabilityThreshold: 1000,
-          pollInterval: 100,
-        },
+    dedupe: [
+      "react",
+      "react-dom",
+      "react/jsx-runtime",
+      "react/jsx-dev-runtime",
+      "@tanstack/react-query",
+      "@tanstack/query-core",
+    ],
+  },
+  server: {
+    host: "::",
+    port: 8080,
+    watch: {
+      awaitWriteFinish: {
+        stabilityThreshold: 1000,
+        pollInterval: 100,
       },
     },
-    plugins,
-  };
+  },
 });
