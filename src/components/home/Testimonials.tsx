@@ -81,7 +81,7 @@ export function Testimonials() {
         </Reveal>
 
         <div
-          className="flex gap-6 w-full h-[528px] lg:h-[616px]"
+          className="flex flex-col lg:flex-row gap-6 w-full lg:h-[616px]"
           onMouseLeave={handleMouseLeave}
         >
           {QUOTES.map((q, idx) => {
@@ -94,7 +94,7 @@ export function Testimonials() {
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.32, 0.72, 0, 1] }}
-                className={`relative overflow-hidden rounded-[8px] bg-[var(--ink)] cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] h-full ${
+                className={`relative overflow-hidden rounded-[8px] bg-[var(--ink)] cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] h-[400px] lg:h-full ${
                   isHovered ? "flex-[18]" : isCollapsed ? "flex-[11]" : "flex-1"
                 }`}
                 onMouseEnter={() => handleMouseEnter(idx)}
@@ -122,13 +122,9 @@ export function Testimonials() {
                 </div>
 
                 <div className="absolute inset-x-0 bottom-0 p-6">
-                  <div className="overflow-hidden">
-                    <p className={`text-white/65 text-sm leading-relaxed transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] pb-3 mb-3 border-b border-white/10 ${
-                      isHovered ? "opacity-100" : "opacity-0"
-                    }`}>
-                      &ldquo;{q.q}&rdquo;
-                    </p>
-                  </div>
+                  <p className="text-white/65 text-sm leading-relaxed pb-3 mb-3 border-b border-white/10">
+                    &ldquo;{q.q}&rdquo;
+                  </p>
                   <div className="font-display text-white text-base lg:text-lg leading-tight">
                     {q.name}
                   </div>

@@ -27,13 +27,13 @@ export function LifeMosaic() {
           </button>
         </Reveal>
 
-        <div className="grid grid-cols-12 gap-4 lg:gap-6 auto-rows-[140px] sm:auto-rows-[180px] lg:auto-rows-[220px]">
+        <div className="grid grid-cols-12 gap-4 lg:gap-6 auto-rows-[200px] sm:auto-rows-[200px] md:auto-rows-[180px] lg:auto-rows-[220px]">
           {GALLERY.map((g, i) => {
             const layouts = [
-              "col-span-12 md:col-span-8 row-span-2",
+              "col-span-12 md:col-span-8 row-span-1 md:row-span-2",
               "col-span-12 md:col-span-4 row-span-1",
               "col-span-12 md:col-span-4 row-span-1",
-              "col-span-12 md:col-span-4 row-span-2",
+              "col-span-12 md:col-span-4 row-span-1 md:row-span-2",
               "col-span-12 md:col-span-8 row-span-1",
               "col-span-12 md:col-span-8 row-span-1",
             ];
