@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { ASSET, NAV_LINKS } from "./data";
+import { NAV_LINKS } from "./data";
 
 export function SiteNav() {
   const [scrolled, setScrolled] = useState(false);
@@ -106,16 +106,16 @@ export function SiteNav() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="lg:hidden overflow-hidden bg-white/40 border-t border-black/5 rounded-b-3xl"
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:hidden overflow-hidden bg-white/95 backdrop-blur-xl border-t border-white/20 rounded-b-3xl shadow-xl"
           >
-            <div className="px-6 py-6 flex flex-col gap-4">
+            <div className="px-6 py-6 flex flex-col gap-1">
               {NAV_LINKS.map((l) => (
                 <a
                   key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="text-[var(--ink)] text-lg font-display"
+                  className="text-[var(--ink)] text-lg font-display px-4 py-3 -mx-4 rounded-xl hover:bg-[var(--primary)]/10 transition-colors"
                 >
                   {l.label}
                 </a>
@@ -125,9 +125,10 @@ export function SiteNav() {
                   setOpen(false);
                   triggerAdmissions("enrol");
                 }}
-                className="mt-2 inline-flex justify-center px-5 py-3 rounded-full bg-[var(--primary)] text-white font-medium w-full text-center active:scale-[0.98] transition-transform cursor-pointer"
+                className="mt-3 inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-[var(--primary)] text-white font-semibold w-full text-center active:scale-[0.98] transition-all duration-300 cursor-pointer shadow-sm hover:bg-[var(--primary)]/80"
               >
-                Enrol Today →
+                Enrol Today
+                <span aria-hidden>→</span>
               </button>
             </div>
           </motion.div>
