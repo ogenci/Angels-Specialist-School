@@ -23,7 +23,7 @@ export function StatStrip() {
             return (
               <StaggerItem
                 key={i}
-                className="relative bg-white/[0.03] border border-white/[0.06] rounded-[8px] p-8 lg:p-10 group hover:bg-white/[0.06] hover:border-[var(--gold)]/20 transition-all duration-500"
+                className="relative bg-white/[0.03] border border-white/[0.06] rounded-[8px] p-5 sm:p-8 lg:p-10 group hover:bg-white/[0.06] hover:border-[var(--gold)]/20 transition-all duration-500"
               >
                 <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--gold)]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="relative z-10">

@@ -46,7 +46,7 @@ export function Pillars() {
           {PILLARS.map((p) => (
             <StaggerItem
               key={p.n}
-              className="relative overflow-hidden rounded-[8px] bg-[var(--ink)] min-h-[423px] lg:min-h-[503px] group cursor-pointer"
+              className="relative overflow-hidden rounded-[8px] bg-[var(--ink)] min-h-[423px] lg:min-h-[503px] group cursor-pointer flex flex-col"
             >
               <div className="absolute inset-0">
                 <img
@@ -56,7 +56,7 @@ export function Pillars() {
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
-              <div className="relative z-10 p-10 lg:p-14 flex flex-col justify-end h-full">
+              <div className="relative z-10 p-6 sm:p-10 lg:p-14 flex-1 flex flex-col justify-end">
                 <div className="font-display text-sm text-[var(--gold)] tracking-widest mb-3">
                   {p.n}
                 </div>

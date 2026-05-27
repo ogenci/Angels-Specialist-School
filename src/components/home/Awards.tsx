@@ -49,7 +49,7 @@ export function Awards() {
             - British Council Partner Schools Awards, 2022
           </Reveal>
 
-          <Reveal delay={0.15} className="mt-12 grid grid-cols-3 gap-6">
+          <Reveal delay={0.15} className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6">
             {[
               { k: "100%", v: "IGCSE pass rate" },
               { k: "A*–B", v: "majority of grades" },

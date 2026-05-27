@@ -152,12 +152,12 @@ export function AdmissionsDrawer() {
       }}
     >
       <DialogContent className="max-w-2xl bg-white/60 backdrop-blur-3xl text-[var(--ink)] border border-white/40 p-0 overflow-hidden shadow-[0_8px_32px_rgba(0,0,0,0.1)] rounded-2xl">
-        <DialogHeader className="p-8 pb-4 bg-[var(--ink)] text-white relative">
+        <DialogHeader className="p-5 sm:p-8 pb-4 bg-[var(--ink)] text-white relative">
           <div className="flex items-center gap-2 mb-2 text-xs uppercase tracking-[0.2em] text-[var(--gold)]">
             <Sparkles size={14} className="animate-pulse" />
             <span>Angels specialist school</span>
           </div>
-          <DialogTitle className="font-display text-3xl font-light tracking-tight text-white">
+          <DialogTitle className="font-display text-2xl sm:text-3xl font-light tracking-tight text-white">
             {step === 4 ? "Enquiry Confirmed" : "Admissions & Campus Tour Enquiry"}
           </DialogTitle>
           <DialogDescription className="text-white/70 text-sm mt-1">
@@ -193,7 +193,7 @@ export function AdmissionsDrawer() {
           </div>
         )}
 
-        <div className="p-8 max-h-[70vh] overflow-y-auto">
+        <div className="p-5 sm:p-8 max-h-[70vh] overflow-y-auto">
           <form onSubmit={handleSubmit} className="space-y-6">
             <AnimatePresence mode="wait">
               {step === 1 && (
@@ -416,7 +416,7 @@ export function AdmissionsDrawer() {
                     Tour & Inquiry Preference
                   </h3>
 
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     {[
                       {
                         id: "enquiry",

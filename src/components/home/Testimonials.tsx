@@ -48,6 +48,7 @@ export function Testimonials() {
   }, [activeVideo, close]);
 
   const handleMouseEnter = useCallback((idx: number) => {
+    if (typeof window === "undefined" || window.innerWidth < 1024) return;
     setHoveredIdx(idx);
     const el = videoRefs.current[idx];
     if (el) {
@@ -58,6 +59,7 @@ export function Testimonials() {
   }, []);
 
   const handleMouseLeave = useCallback(() => {
+    if (typeof window === "undefined" || window.innerWidth < 1024) return;
     videoRefs.current.forEach((el) => {
       if (el) { el.pause(); el.currentTime = 0; }
     });
@@ -75,7 +77,7 @@ export function Testimonials() {
               Voices of Angels
             </span>
           </div>
-          <h2 className="font-display text-[clamp(2rem,5vw,4.5rem)] leading-[1.05] text-[var(--ink)] text-balance">
+          <h2 className="font-display text-[clamp(2rem,5vw,4.5rem)] leading-[1.05] text-balance text-[var(--ink)]">
             What our families <span className="italic">say.</span>
           </h2>
         </Reveal>
@@ -95,7 +97,7 @@ export function Testimonials() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.32, 0.72, 0, 1] }}
                 className={`relative overflow-hidden rounded-[8px] bg-[var(--ink)] cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] h-[400px] lg:h-full ${
-                  isHovered ? "flex-[18]" : isCollapsed ? "flex-[11]" : "flex-1"
+                  isHovered ? "lg:flex-[18]" : isCollapsed ? "lg:flex-[11]" : "lg:flex-1"
                 }`}
                 onMouseEnter={() => handleMouseEnter(idx)}
                 onClick={() => setActiveVideo(q.video)}
@@ -103,6 +105,7 @@ export function Testimonials() {
                 <div className="absolute inset-0 overflow-hidden">
                   <video
                     ref={(el) => { videoRefs.current[idx] = el; }}
+                    poster={q.img}
                     muted
                     playsInline
                     loop

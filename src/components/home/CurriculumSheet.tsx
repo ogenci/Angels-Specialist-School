@@ -214,7 +214,7 @@ export function CurriculumSheet() {
               className="flex flex-col h-full min-h-screen"
             >
               {/* Header block with gold accent */}
-              <div className="bg-[var(--ink)] text-white p-8 relative">
+              <div className="bg-[var(--ink)] text-white p-5 sm:p-8 relative">
                 <div className="flex items-center gap-2 mb-2 text-xs uppercase tracking-[0.2em] text-[var(--gold)]">
                   <GraduationCap size={14} />
                   <span>{data.from}</span>
@@ -228,7 +228,7 @@ export function CurriculumSheet() {
               </div>
 
               {/* Main content body */}
-              <div className="p-8 space-y-6 flex-1">
+              <div className="p-5 sm:p-8 space-y-6 flex-1">
                 {/* Accreditation & Boarding Badges */}
                 <div className="flex flex-wrap items-center gap-3">
                   <div className="px-3.5 py-2 bg-white border border-[var(--border)] text-[10px] uppercase tracking-wider font-semibold text-[var(--ink)] rounded-sm">
@@ -305,11 +305,11 @@ export function CurriculumSheet() {
               </div>
 
               {/* Action footer */}
-              <div className="p-8 bg-white border-t border-[var(--border)] mt-auto flex items-center justify-between gap-4 sticky bottom-0">
+              <div className="p-5 sm:p-8 bg-white border-t border-[var(--border)] mt-auto flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sticky bottom-0">
                 <SheetClose asChild>
                   <Button
                     variant="ghost"
-                    className="rounded-full px-6 h-11 text-xs font-semibold uppercase tracking-wider text-[var(--ink-soft)] hover:bg-black/5"
+                    className="rounded-full w-full sm:w-auto px-6 h-11 text-xs font-semibold uppercase tracking-wider text-[var(--ink-soft)] hover:bg-black/5"
                   >
                     <ArrowLeft size={16} className="mr-1" />
                     Back
@@ -317,7 +317,7 @@ export function CurriculumSheet() {
                 </SheetClose>
                 <Button
                   onClick={handleOpenAdmissions}
-                  className="rounded-full px-8 h-11 text-xs font-semibold uppercase tracking-wider bg-[var(--gold)] text-[var(--ink)] hover:bg-[var(--ink)] hover:text-white transition-all duration-300 flex items-center gap-1.5"
+                  className="rounded-full w-full sm:w-auto px-8 h-11 text-xs font-semibold uppercase tracking-wider bg-[var(--gold)] text-[var(--ink)] hover:bg-[var(--ink)] hover:text-white transition-all duration-300 flex items-center justify-center gap-1.5"
                 >
                   Request admissions info
                   <ArrowRight size={16} />
