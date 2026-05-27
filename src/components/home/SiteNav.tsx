@@ -50,7 +50,7 @@ export function SiteNav() {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       className={`fixed top-4 left-0 right-0 mx-auto w-[90%] max-w-[1125px] z-50 transition-all duration-500 ${
-        open ? "rounded-3xl" : "rounded-full"
+        open ? "rounded-t-3xl rounded-b-none" : "rounded-full"
       } bg-primary/45 backdrop-blur-2xl border border-white/30 shadow-[0_4px_24px_rgba(0,0,0,0.07)]`}
     >
       <div className="mx-auto max-w-[1125px] px-6 lg:px-6 flex items-center justify-between transition-all duration-500 h-16">
@@ -103,33 +103,43 @@ export function SiteNav() {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:hidden overflow-hidden bg-white/95 backdrop-blur-xl border-t border-white/20 rounded-b-3xl shadow-xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-40 bg-[var(--ink)]/95 backdrop-blur-2xl lg:hidden flex flex-col"
+            onClick={() => setOpen(false)}
           >
-            <div className="px-6 py-6 flex flex-col gap-1">
-              {NAV_LINKS.map((l) => (
-                <a
+            <div
+              className="flex-1 flex flex-col items-center justify-center gap-6 px-8"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {NAV_LINKS.map((l, i) => (
+                <motion.a
                   key={l.href}
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="text-[var(--ink)] text-lg font-display px-4 py-3 -mx-4 rounded-xl hover:bg-[var(--primary)]/10 transition-colors"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.06, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                  className="text-white/90 text-3xl font-display tracking-tight hover:text-white transition-colors"
                 >
                   {l.label}
-                </a>
+                </motion.a>
               ))}
-              <button
+              <motion.button
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: NAV_LINKS.length * 0.06 + 0.1, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                 onClick={() => {
                   setOpen(false);
                   triggerAdmissions("enrol");
                 }}
-                className="mt-3 inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full bg-[var(--primary)] text-white font-semibold w-full text-center active:scale-[0.98] transition-all duration-300 cursor-pointer shadow-sm hover:bg-[var(--primary)]/80"
+                className="mt-4 inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[var(--primary)] text-white font-semibold text-lg active:scale-[0.98] transition-all duration-300 cursor-pointer shadow-lg hover:bg-[var(--primary)]/80"
               >
                 Enrol Today
                 <span aria-hidden>→</span>
-              </button>
+              </motion.button>
             </div>
           </motion.div>
         )}
